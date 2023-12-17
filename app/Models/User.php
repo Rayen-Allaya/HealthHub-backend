@@ -19,8 +19,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'status',
         'email',
         'password',
+    ];
+
+    public static $rules = [
+        'status' => 'in:user,doctor,admin',
+        // Other validation rules...
     ];
 
     /**

@@ -12,4 +12,11 @@ class UserController extends Controller
         $users = User::all();
         return $users;
     }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate(User::$rules);
+
+        User::create($validatedData);
+    }
 }
