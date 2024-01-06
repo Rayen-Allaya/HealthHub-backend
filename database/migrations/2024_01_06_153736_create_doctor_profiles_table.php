@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('doctor_profiles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('doctor_id')->nullable();
+            $table->string('speciality');
             $table->integer('cost');
             $table->string('governorate');
             $table->float('latitude');
