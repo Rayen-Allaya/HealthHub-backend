@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             AppointmentSeeder::class,
             AvailibilitySeeder::class,
             DoctorProfileSeeder::class,
+            ReviewSeeder::class,
         ]);
     }
 }
