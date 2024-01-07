@@ -10,7 +10,13 @@ class ReviewController extends Controller
     public function index()
     {
         $reviews = Review::all();
-        return $reviews;
+        return response()->json($reviews);
+    }
+    public function delete($id)
+    {
+        $review = Review::find($id);
+        $review->delete();
+        return response()->json(['message' => 'Review deleted successfully'], 200);
     }
     
 }
