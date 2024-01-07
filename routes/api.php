@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AvailibilityController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DoctorProfileController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,5 +18,20 @@ use App\Http\Controllers\AvailibilityController;
 */
 
 Route::get('/users', [UserController::class, 'index'] );
+
+
+
 Route::get('/appointments/create', [AppointmentController::class, 'index']);
+Route::put('/appointments/update/{id}', [AppointmentController::class, 'update']);
+Route::delete('/appointments/delete/{id}', [AppointmentController::class, 'delete']);
+
 Route::get('/availibilities/create', [AvailibilityController::class, 'index']);
+Route::put('/availibilities/update/{id}', [AvailibilityController::class, 'update']);
+Route::delete('/availibilities/delete/{id}', [AvailibilityController::class, 'delete']);
+
+Route::get('/doctors', [DoctorProfileController::class, 'index'] );
+Route::post('/doctors/add', [DoctorProfileController::class, 'add'] );
+Route::get('/doctors/{id}', [DoctorProfileController::class, 'getById'] );
+Route::put('/doctors/update/{id}', [DoctorProfileController::class, 'update'] );
+Route::delete('/doctors/delete/{id}', [DoctorProfileController::class, 'delete'] );
+Route::get('/doctors/search', [DoctorProfileController::class, 'search'] );

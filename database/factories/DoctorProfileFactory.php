@@ -17,7 +17,7 @@ class DoctorProfileFactory extends Factory
     public function definition(): array
     {
         $doctor= \App\Models\User::where('role', 'doctor')->inRandomOrder()->first();
-        $governorate= ['Ariana', 'Beja', 'Ben Arous', 'Bizerte', 'Gabes', 'Gafsa', 'Jendouba', 'Kairouan', 'Kasserine', 'Kebili', 'Kef', 'Mahdia', 'Manouba', 'Medenine', 'Monastir', 'Nabeul', 'Sfax', 'Sidi Bouzid', 'Siliana', 'Sousse', 'Tataouine', 'Tozeur', 'Tunis', 'Zaghouan']; 
+        $governorate= ['Djerba','Ariana', 'Beja', 'Ben Arous', 'Bizerte', 'Gabes', 'Gafsa', 'Jendouba', 'Kairouan', 'Kasserine', 'Kebili', 'Kef', 'Mahdia', 'Manouba', 'Medenine', 'Monastir', 'Nabeul', 'Sfax', 'Sidi Bouzid', 'Siliana', 'Sousse', 'Tataouine', 'Tozeur', 'Tunis', 'Zaghouan']; 
         $specilaity= ['Cardiologist', 'Dentist', 'Otolaryngologist'];
         return [
             'doctor_id' => $doctor->id,
