@@ -16,10 +16,10 @@ class AvailibilityFactory extends Factory
      */
     public function definition(): array
     {
-        $doctor= \App\Models\User::where('role', 'doctor')->inRandomOrder()->first();
+        $doctor = \App\Models\User::where('role', 'doctor')->inRandomOrder()->first();
         return [
             'doctor_id' => $doctor->id,
-            'datetime' => fake()->dateTime(),
+            'datetime' => fake()->dateTimeInInterval($startDate = '-14 days', $interval = '+ 60 days', $timezone = null),
         ];
     }
 }

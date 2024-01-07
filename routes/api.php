@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AvailibilityController;
 use App\Http\Controllers\AppointmentController;
-use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\DoctorProfileController;
+use App\Http\Controllers\ReviewController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,11 +25,11 @@ Route::get('/users/{id}', [UserController::class, 'getById']);
 Route::delete('/users/delete/{id}', [UserController::class, 'delete']);
 Route::put('/user/update/{id}', [UserController::class, 'update']);
 
-Route::get('/reviews', [ReviewController::class, 'index']);
+Route::get('/doctors/{doctor_id}/reviews', [ReviewController::class, 'index']);
 Route::delete('/reviews/{id}', [ReviewController::class, 'delete']);
 
-Route::get('/appointments', [AppointmentController::class, 'index']);
-Route::get('/availibilities', [AvailibilityController::class, 'index']);
+Route::get('/doctors/{doctor_id}/appointments', [AppointmentController::class, 'index']);
+Route::get('/doctors/{doctor_id}/availibilities', [AvailibilityController::class, 'index']);
 
 Route::get('/appointments/create', [AppointmentController::class, 'index']);
 Route::put('/appointments/update/{id}', [AppointmentController::class, 'update']);

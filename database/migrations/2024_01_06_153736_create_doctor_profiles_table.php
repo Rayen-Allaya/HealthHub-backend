@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('doctor_id')->nullable();
             $table->string('speciality');
             $table->integer('cost');
+            $table->float("rating");
+            $table->integer('reviews');
             $table->string('governorate');
             $table->float('latitude');
             $table->float('longitude');

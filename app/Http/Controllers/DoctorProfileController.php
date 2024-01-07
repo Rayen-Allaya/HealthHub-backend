@@ -9,7 +9,7 @@ class DoctorProfileController extends Controller
 {
     public function index()
     {
-        $doctors_profile = DoctorProfile::all();
+        $doctors_profile = DoctorProfile::with("user")->orderBy("rating", "desc")->get();
         return $doctors_profile;
     }
 
@@ -21,18 +21,18 @@ class DoctorProfileController extends Controller
             'governorate' => 'required|string',
             'latitude' => 'required',
             'longitude' => 'required',
-            'description' =>'string',
+            'description' => 'string',
         ]);
 
         $doctor = DoctorProfile::create($validatedData);
-        return response()->json(['message' => 'doctor added successfully' , 'doctor' => $doctor], 201);
+        return response()->json(['message' => 'doctor added successfully', 'doctor' => $doctor], 201);
     }
 
     public function getById($id)
     {
-        $doctor = DoctorProfile::find($id);
+        $doctor = DoctorProfile::with("user")->find($id);
 
-        return response()->json(['doctor' => $doctor], 200);
+        return response()->json($doctor, 200);
     }
 
     public function update(Request $request, $id)
@@ -53,7 +53,8 @@ class DoctorProfileController extends Controller
         return response()->json(['message' => 'Doctor updated successfully', 'doctor' => $doctor], 200);
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $doctor = DoctorProfile::find($id);
         $doctor->delete();
         return response()->json(['message' => 'Doctor deleted successfully'], 200);
