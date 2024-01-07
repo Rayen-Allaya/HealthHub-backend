@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             DoctorProfileSeeder::class,
             ReviewSeeder::class,
             SpecialitySeeder::class,
+            ExternalPatientSeeder::class,
 
         ]);
     }
