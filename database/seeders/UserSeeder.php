@@ -104,11 +104,11 @@ class UserSeeder extends Seeder
             "Dr. Nabil Mansour"
         ];
         for ($i = 1; $i <= 40; $i++) {
-            \App\Models\User::factory(1)->create(["password" => '$2a$12$CHCDZx9MoTwZTB2ufpTCFexchP.Qk00xKn88XwANsw8kjl4fYQGPe', 'name' => $names[$i - 1], 'image' => "/images/doctors/" . strtolower($images[$i - 1]), 'role' => "doctor",]);
+            \App\Models\User::factory(1)->create(['name' => $names[$i - 1], 'image' => "/images/doctors/" . strtolower($images[$i - 1]), 'role' => "doctor",]);
         }
 
         for ($i = 1; $i <= 60; $i++) {
-            \App\Models\User::factory(1)->create(["password" => '$2a$12$CHCDZx9MoTwZTB2ufpTCFexchP.Qk00xKn88XwANsw8kjl4fYQGPe', 'image' => "/images/anonymousUser.jpeg", 'role' => "user",]);
+            \App\Models\User::factory(1)->create(['image' => "/images/anonymousUser.jpeg", 'role' => "user",]);
         }
     }
 }

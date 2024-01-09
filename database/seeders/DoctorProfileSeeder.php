@@ -46,6 +46,7 @@ class DoctorProfileSeeder extends Seeder
             $doctor_database = \App\Models\User::where("id", $i + 1)->first();
             $doctor = [
                 'doctor_id' => $doctor_database->id,
+                'name' => $doctor_database->name,
                 'speciality' => fake()->randomElement($specilaity),
                 'cost' => fake()->numberBetween($min = 50, $max = 200),
                 'governorate' => $cities[$i],

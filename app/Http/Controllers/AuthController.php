@@ -11,6 +11,8 @@ class AuthController extends Controller
 {
     public function loginUser(Request $request)
     {
+        // return User::where('email', $request->email)->first();
+
         try {
             $validateUser = Validator::make(
                 $request->all(),

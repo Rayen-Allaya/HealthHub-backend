@@ -12,11 +12,18 @@ class UserController extends Controller
         $users = User::all();
         return response()->json($users);;
     }
+
+    public function me()
+    {
+        $authUser = auth('sanctum')->user();
+        return response()->json($authUser, 200);
+    }
+
     public function add(Request $request)
     {
-        $validateddata = $request-> validate([
+        $validateddata = $request->validate([
             'name' => 'required|string',
-            'email'=> 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users,email',
             'role' => 'string',
             'password' => 'required|string|min:8',
         ]);
@@ -28,11 +35,13 @@ class UserController extends Controller
         ));
         return response()->json(['message' => 'User added successfully', 'user' => $user], 201);
     }
-    public function getById($id){
+    public function getById($id)
+    {
         $user = User::find($id);
         return response()->json(['user' => $user], 200);
     }
-    public function delete($id){
+    public function delete($id)
+    {
         $user = User::find($id);
         $user->delete();
         return response()->json(['message' => 'User deleted successfully'], 200);
@@ -43,7 +52,7 @@ class UserController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'string',
-            'email'=> 'email|unique:users,email'. $user->id,
+            'email' => 'email|unique:users,email' . $user->id,
             'role' => 'string',
             'password' => 'string|min:8',
         ]);

@@ -14,8 +14,6 @@ class UserFactory extends Factory
     /**
      * The current password being used by the factory.
      */
-    protected static ?string $password;
-
     /**
      * Define the model's default state.
      *
@@ -28,7 +26,7 @@ class UserFactory extends Factory
             'role' => fake()->randomElement(['user', 'doctor', 'admin']),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2a$12$FL1DJ3w1MerQeMInfkzWOeBwIXZ9bAF6R0N3fpRQY4W9Y1hLKGO82',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
             'remember_token' => Str::random(10),
         ];
     }

@@ -22,7 +22,7 @@ use App\Http\Controllers\ReviewController;
 
 Route::get('/users', [UserController::class, 'index']);
 Route::post('/users', [UserController::class, 'add']);
-Route::get('/users/{id}', [UserController::class, 'getById']);
+Route::get('/me', [UserController::class, 'me']);
 Route::delete('/users/delete/{id}', [UserController::class, 'delete']);
 Route::put('/user/update/{id}', [UserController::class, 'update']);
 

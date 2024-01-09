@@ -4,12 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\DoctorProfile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
 
 class DoctorProfileController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $doctors_profile = DoctorProfile::with("user")->orderBy("rating", "desc")->get();
+        $query = $request->all();
+
+        $query["name"] = array_key_exists("name", $query) ? $query["name"] : "";
+        $query["governorate"] = array_key_exists("governorate", $query) ? $query["governorate"] : "";
+        $query["speciality"] = array_key_exists("speciality", $query) ? $query["speciality"] : "";
+        $doctors_profile = DoctorProfile::where(DB::raw('lower(name)'), 'like', "%" . Str::lower($query["name"]) . "%")
+            ->where(DB::raw('lower(governorate)'), 'like', "%" . Str::lower($query["governorate"]) . "%")
+            ->where(DB::raw('lower(speciality)'), 'like', "%" . Str::lower($query["speciality"]) . "%")
+            ->with("user")->orderBy("rating", "desc")->get();
+
         return $doctors_profile;
     }
 
